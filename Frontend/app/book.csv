@@ -1,0 +1,21 @@
+id,title,author,category,isbn,total_copies,available_copies,created_at
+1,Atomic Habits,James Clear,Self Development,9780735211292,10,7,2024-01-10
+2,Deep Work,Cal Newport,Productivity,9781455586691,8,5,2024-01-11
+3,Clean Code,Robert C. Martin,Programming,9780132350884,12,9,2024-01-12
+4,The Pragmatic Programmer,Andrew Hunt,Programming,9780201616224,6,3,2024-01-13
+5,Think and Grow Rich,Napoleon Hill,Business,9781585424337,9,4,2024-01-14
+6,Rich Dad Poor Dad,Robert Kiyosaki,Finance,9781612680194,15,10,2024-01-15
+7,The Lean Startup,Eric Ries,Business,9780307887894,7,5,2024-01-16
+8,Zero to One,Peter Thiel,Business,9780804139298,10,6,2024-01-17
+9,Introduction to Algorithms,Thomas H. Cormen,Programming,9780262033848,5,2,2024-01-18
+10,You Don't Know JS,Kyle Simpson,Programming,9781491904244,11,8,2024-01-19
+11,Harry Potter 1,J.K. Rowling,Fiction,9780747532699,20,15,2024-01-20
+12,Harry Potter 2,J.K. Rowling,Fiction,9780747538493,18,12,2024-01-21
+13,Harry Potter 3,J.K. Rowling,Fiction,9780747542155,17,13,2024-01-22
+14,Harry Potter 4,J.K. Rowling,Fiction,9780747546245,16,11,2024-01-23
+15,The Alchemist,Paulo Coelho,Fiction,9780061122415,14,9,2024-01-24
+16,1984,George Orwell,Fiction,9780451524935,13,7,2024-01-25
+17,To Kill a Mockingbird,Harper Lee,Fiction,9780060935467,12,6,2024-01-26
+18,The Great Gatsby,F. Scott Fitzgerald,Fiction,9780743273565,10,5,2024-01-27
+19,Moby Dick,Herman Melville,Fiction,9781503280786,9,4,2024-01-28
+20,War and Peace,Leo Tolstoy,Fiction,9780199232765,8,3,2024-01-29
