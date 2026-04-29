@@ -1,13 +1,13 @@
 
 
--- حذف الجداول إذا كانت موجودة
+
 DROP TABLE IF EXISTS fraud_alerts;
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS accounts;
 DROP TABLE IF EXISTS users;
 
 -- =========================================
--- 👤 USERS TABLE
+--  USERS TABLE
 -- =========================================
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -18,7 +18,7 @@ CREATE TABLE users (
 );
 
 -- =========================================
--- 🏦 ACCOUNTS TABLE
+--  ACCOUNTS TABLE
 -- =========================================
 CREATE TABLE accounts (
     id SERIAL PRIMARY KEY,
@@ -29,7 +29,7 @@ CREATE TABLE accounts (
 );
 
 -- =========================================
--- 💳 TRANSACTIONS TABLE
+--  TRANSACTIONS TABLE
 -- =========================================
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
@@ -46,7 +46,7 @@ CREATE TABLE transactions (
 );
 
 -- =========================================
--- 🚨 FRAUD ALERTS TABLE
+--  FRAUD ALERTS TABLE
 -- =========================================
 CREATE TABLE fraud_alerts (
     id SERIAL PRIMARY KEY,
@@ -57,7 +57,7 @@ CREATE TABLE fraud_alerts (
 );
 
 -- =========================================
--- 📜 LOGS TABLE (OPTIONAL)
+--  LOGS TABLE (OPTIONAL)
 -- =========================================
 CREATE TABLE logs (
     id SERIAL PRIMARY KEY,
@@ -66,14 +66,14 @@ CREATE TABLE logs (
 );
 
 -- =========================================
--- 📊 INDEXES (Performance)
+--  INDEXES (Performance)
 -- =========================================
 CREATE INDEX idx_transactions_sender ON transactions(sender_account_id);
 CREATE INDEX idx_transactions_receiver ON transactions(receiver_account_id);
 CREATE INDEX idx_fraud_prediction ON transactions(fraud_prediction);
 
 -- =========================================
--- 🧪 SAMPLE DATA
+--  SAMPLE DATA
 -- =========================================
 
 -- Users
@@ -103,5 +103,5 @@ INSERT INTO logs (action) VALUES
 ('Transaction created');
 
 -- =========================================
--- 🎉 DONE
+--  DONE
 -- =========================================
