@@ -1,13 +1,4 @@
 "use client";
-
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { BookOpen, Edit, Trash } from "lucide-react";
-
-interface BookCardProps {
-  id: string;
-  title: string;
   author: string;
   category?: string;
   coverUrl?: string;
