@@ -2,12 +2,7 @@
 
 import React from "react";
 
-interface AuthLayoutProps {
-  children: React.ReactNode;
-  title?: string;
-  subtitle?: string;
-}
-
+interface Aut
 export default function AuthLayout({
   children,
   title = "Welcome",
