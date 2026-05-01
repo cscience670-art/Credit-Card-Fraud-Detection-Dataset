@@ -2,13 +2,6 @@
 
 import { useState } from "react";
 
-export type Borrow = {
-  bookId: string;
-  userId: string;
-  dueDate: string;
-};
-
-export default function BorrowForm({
   onSubmit,
 }: {
   onSubmit: (data: Borrow) => Promise<void>;
