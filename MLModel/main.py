@@ -7,3 +7,4 @@ data = pd.read_csv("creditcard.csv")
 print(data.head())
 yuhtuihtiuriojio-bhiuoyuhovghfyufyuuiui
 yufiuhiohgiutyiuopjiu_
+hyugyjguihiojiojpoop
