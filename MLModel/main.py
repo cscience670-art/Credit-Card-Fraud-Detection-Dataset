@@ -3,7 +3,7 @@ import pandas as pd
 # تحميل البيانات
 data = pd.read_csv("creditcard.csv")
 
-# iju(hiu(hoijh(('عرض أول 5 صفوف
+# iju(hiu(hoijh(('hjgjgbkjbgilkukgjugiuhilhlohloioعرض أول 5 صفوف
 print(data.head())
 yuhtuihtiuriojio-bhiuoyuhovghfyufyuuiui
 yufiuhiohgiutyiuopjiu_
