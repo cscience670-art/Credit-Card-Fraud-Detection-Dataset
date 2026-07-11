@@ -6,5 +6,5 @@ data = pd.read_csv("creditcard.csv")
 # iju(hiu(hoijh(('hjgjgbkjbgilkukgjugiuhilhlohloioعرض أول 5 صفوف
 print(data.head())
 yuhtuihtiuriojio-bhiuoyuhovghfyufyuuiui
-yufiuhiohgiutyiuopjiu_
+yufiuhiohgiutyiuopjiلبلالبللللللللللللللللللللu_
 hyugyjguihiojiojpoop
