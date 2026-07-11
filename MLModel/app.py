@@ -2,9 +2,9 @@ import pickle
 import numpy as np
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List      
 
-# 1. بناء الهيكل المدخل
+# 1. للللللبناء الهيكل المدخل
 class Transaction(BaseModel):
     features: List[float] = Field(..., min_items=30, max_items=30)
 
