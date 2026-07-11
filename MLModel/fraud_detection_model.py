@@ -2,20 +2,19 @@
 # 💸 Advanced Fraud Detection ML Model
 # =========================================
 
+import pickle
 import pandas as pd
-import picklertgbihpgeiog($po'ohp
-
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-
 
 # =========================================
 # 📦 1. Load Dataset
 # =========================================
 
 print("📥 Loading dataset...")
+# Make sure creditcard.csv is in the same directory
 data = pd.read_csv("creditcard.csv")
 
 # ⚡ Optimization: use smaller dataset
@@ -55,9 +54,9 @@ print("\n🤖 Training model...")
 model = RandomForestClassifier(
     n_estimators=150,
     max_depth=12,
-    class_weight='balanced',
+    class_weight="balanced",
     random_state=42,
-    n_jobs=-1  # use all CPU cores
+    n_jobs=-1,  # use all CPU cores
 )
 
 model.fit(X_train, y_train)
@@ -90,8 +89,11 @@ print(roc_auc_score(y_test, y_prob))
 
 print("\n💾 Saving model and scaler...")
 
-pickle.dump(model, open("fraud_model.pkl", "wb"))
-pickle.dump(scaler, open("scaler.pkl", "wb"))
+with open("fraud_model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+with open("scaler.pkl", "wb") as f:
+    pickle.dump(scaler, f)
 
 print("✅ Saved: fraud_model.pkl & scaler.pkl")
 
@@ -100,10 +102,12 @@ print("✅ Saved: fraud_model.pkl & scaler.pkl")
 # 🔍 7. Prediction Function (for API)
 # =========================================
 
+
 def predict_transaction(input_data):
-    """
-    input_data: list of features
-    """
+    """input_data: list or 1D array of features matching X's shape"""
+    # Convert to standard list to avoid feature name mismatch warnings
+    if hasattr(input_data, "tolist"):
+        input_data = input_data.tolist()
 
     input_scaled = scaler.transform([input_data])
 
@@ -112,7 +116,7 @@ def predict_transaction(input_data):
 
     return {
         "prediction": int(prediction),
-        "fraud_probability": float(probability)
+        "fraud_probability": float(probability),
     }
 
 
@@ -122,6 +126,7 @@ def predict_transaction(input_data):
 
 print("\n🔍 Testing prediction...")
 
+# Extracting a sample as a raw array of values
 sample = X.iloc[0].values
 result = predict_transaction(sample)
 
