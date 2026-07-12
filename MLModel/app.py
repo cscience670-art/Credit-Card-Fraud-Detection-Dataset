@@ -1,44 +1,56 @@
+import os
 import pickle
 import numpy as np
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
-from typing import List      
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
-# 1. للللللبناء الهيكل المدخل
-class Transaction(BaseModel):
-    features: List[float] = Field(..., min_items=30, max_items=30)
+app = Flask(__name__)
+CORS(app)  # Enable Cross-Origin Resource Sharing
 
-app = FastAPI(title="💸 Fraud Detection API")
-
-# تحميل الملفات المحفوظة
+# Load model and scaler once at startup
 try:
     with open("fraud_model.pkl", "rb") as f:
         model = pickle.load(f)
     with open("scaler.pkl", "rb") as f:
         scaler = pickle.load(f)
-    print("✅ تم تحميل النموذج والمحول بنجاح!")
+    print("✅ Model and Scaler loaded successfully!")
 except FileNotFoundError:
     model, scaler = None, None
-    print("⚠️ تنبيه: لم يتم العثور على الملفات المحفوظة بعد. قم بتشغيل قطاع التدريب أولاً.")
+    print("⚠️ Error: Saved model or scaler file not found.")
 
-@app.post("/predict", summary="فحص معاملة مالية")
-def predict_transaction(transaction: Transaction):
+@app.route("/predict", methods=["POST"])
+def predict():
     if model is None or scaler is None:
-        raise HTTPException(status_code=503, detail="النموذج غير جاهز للعمل بعد أو لم يتم تدريبه.")
-    
+        return jsonify({"error": "Model or scaler not loaded. Train the model first."}), 503
+
     try:
-        # تجهيز البيانات وتحويلها
-        raw_features = np.array(transaction.features).reshape(1, -1)
+        data = request.get_json()
+        if not data or "features" not in data:
+            return jsonify({"error": "Missing 'features' in request body."}), 400
+
+        features = data["features"]
+        
+        # Verify feature length
+        if len(features) != 30:
+            return jsonify({"error": f"Expected 30 features, got {len(features)}"}), 400
+
+        # Convert to numpy array and reshape
+        raw_features = np.array(features).reshape(1, -1)
+        
+        # Scale features
         scaled_features = scaler.transform(raw_features)
         
-        # التنبؤ
+        # Predict
         prediction = int(model.predict(scaled_features)[0])
         probability = float(model.predict_proba(scaled_features)[0][1])
-        
-        return {
-            "is_fraud": bool(prediction == 1),
-            "fraud_probability": round(probability, 4),
-            "status": "🚨 FRAUD DETECTED" if prediction == 1 else "✅ NORMAL"
-        }
+
+        return jsonify({
+            "prediction": prediction,
+            "fraud_probability": round(probability, 4)
+        })
+
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"حدث خطأ أثناء المعالجة: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
