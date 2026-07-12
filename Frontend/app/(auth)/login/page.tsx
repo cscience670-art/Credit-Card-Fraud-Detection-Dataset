@@ -1,5 +1,14 @@
+"use client";
+
 import AuthorForm from "@/app/components/forms/AuthorForm";
 
+const author = {
+  id: "1",
+  name: "Albert Camus",
+  country: "France",
+  bio: "French philosopher and writer",
+  birthDate: "1913-11-07",
+};
 
 export default function EditAuthorPage() {
   const handleUpdate = async (data: any) => {
