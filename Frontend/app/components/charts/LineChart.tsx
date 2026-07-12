@@ -1,5 +1,14 @@
 "use client";
 
+import React from "react";
+import {
+  LineChart as ReLineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
 } from "recharts";
 
 type DataItem = {
