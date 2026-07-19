@@ -6,6 +6,7 @@ The project predicts whether a credit card transaction is fraudulent using a tra
 
 ---
 
+
 # Features
 
 * Credit card fraud prediction
