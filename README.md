@@ -1,5 +1,6 @@
 # Credit Card Fraud Detection
 
+
 A full-stack Credit Card Fraud Detection application that combines a Machine Learning model with a simple web interface.
 
 The project predicts whether a credit card transaction is fraudulent using a trained Random Forest model. It consists of a Flask backend that serves the ML model and a Next.js frontend that allows users to enter transaction data and receive predictions.
