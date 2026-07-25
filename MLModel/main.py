@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # تحميل البيانات
 data = pd.read_csv("creditcard.csv")
 
